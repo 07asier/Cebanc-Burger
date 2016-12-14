@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".DatosCliente"
             android:label=""/>
+        <activity android:name=".Pizzas"
+            android:label=""/>
     </application>
 
 </manifest>

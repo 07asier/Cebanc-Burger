@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class DatosCliente extends MainActivity {
     Button siguiente;
     Button salir;
     EditText nombre,apellidos,direccion,telefono;
+    boolean verificar=false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class DatosCliente extends MainActivity {
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            verificar=comprobacion();
             lanzarPedido();
             }
         });
@@ -36,7 +39,6 @@ public class DatosCliente extends MainActivity {
                 salir();
             }
         });
-
     }
 
     public void lanzarPedido(){
@@ -48,9 +50,28 @@ public class DatosCliente extends MainActivity {
         startActivityForResult(i,1234);
     }
 
+    public boolean comprobacion(){
+        if(nombre.getText().toString().equals("") && apellidos.getText().toString().equals("") && direccion.getText().toString().equals("") && telefono.getText().toString().equals("")){
+            Toast.makeText(this, "¡ Deberías introducir los datos para continuar !", Toast.LENGTH_SHORT).show();
+
+            if(nombre.getText().toString().equals("")){
+                Toast.makeText(this, "Falta por introducir el nombre", Toast.LENGTH_SHORT).show();
+            }else if(apellidos.getText().toString().equals("")){
+                Toast.makeText(this, "Faltan por introducir los apellidos", Toast.LENGTH_SHORT).show();
+            }else if(direccion.getText().toString().equals("")){
+                Toast.makeText(this, "Falta por introducir la dirección", Toast.LENGTH_SHORT).show();
+            }else if(telefono.getText().toString().equals("")){
+                Toast.makeText(this, "Falta por introducir el número de teléfono ", Toast.LENGTH_SHORT).show();
+            }
+        }
+        //faltan poner bien los return
+        return true;
+    }
+
     public void salir(){
         finish();
     }
+
 
 
 }
