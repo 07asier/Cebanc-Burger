@@ -9,10 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class DatosCliente extends MainActivity {
-    Button siguiente;
-    Button salir;
-    EditText nombre,apellidos,direccion,telefono;
-    boolean verificar=false;
+    private Button siguiente;
+    private Button salir;
+    private EditText nombre,apellidos,direccion,telefono;
+    private boolean verificar=false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +28,12 @@ public class DatosCliente extends MainActivity {
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            verificar=comprobacion();
-            lanzarPedido();
+            //verificar=comprobacion();
+                if (verificar=true) {
+                    lanzarPedido();
+                }else {
+                    Toast.makeText(DatosCliente.this, "zepiii", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -42,33 +46,42 @@ public class DatosCliente extends MainActivity {
     }
 
     public void lanzarPedido(){
-       Intent i=new Intent(DatosCliente.this,Pizzas.class);
-        i.putExtra("nombre",nombre.getText().toString());
-        i.putExtra("apellidos",apellidos.getText().toString());
-        i.putExtra("direccion",direccion.getText().toString());
-        i.putExtra("telefono",telefono.getText().toString());
-        startActivityForResult(i,1234);
+
+            Intent i = new Intent(DatosCliente.this, Hamburguesas.class);
+            i.putExtra("nombre", nombre.getText().toString());
+            i.putExtra("apellidos", apellidos.getText().toString());
+            i.putExtra("direccion", direccion.getText().toString());
+            i.putExtra("telefono", telefono.getText().toString());
+            startActivityForResult(i, 1234);
+
     }
 
-    public boolean comprobacion(){
-        if(nombre.getText().toString().equals("") && apellidos.getText().toString().equals("") && direccion.getText().toString().equals("") && telefono.getText().toString().equals("")){
+   /*public boolean comprobacion(){
+      boolean verificar=false;
+        if(nombre.getText().toString().equals("") && apellidos.getText().toString().equals("") && direccion.getText().toString().equals("") && telefono.getText().toString().equals("")) {
             Toast.makeText(this, "¡ Deberías introducir los datos para continuar !", Toast.LENGTH_SHORT).show();
-
+            verificar = false;
+        }else if(nombre.getText().toString().equals("") || apellidos.getText().toString().equals("") || telefono.getText().toString().equals("") ){
             if(nombre.getText().toString().equals("")){
-                Toast.makeText(this, "Falta por introducir el nombre", Toast.LENGTH_SHORT).show();
-            }else if(apellidos.getText().toString().equals("")){
-                Toast.makeText(this, "Faltan por introducir los apellidos", Toast.LENGTH_SHORT).show();
-            }else if(direccion.getText().toString().equals("")){
-                Toast.makeText(this, "Falta por introducir la dirección", Toast.LENGTH_SHORT).show();
-            }else if(telefono.getText().toString().equals("")){
-                Toast.makeText(this, "Falta por introducir el número de teléfono ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "¡ Deberías introducir los datos para continuar !", Toast.LENGTH_SHORT).show();
+                verificar=false;
+            }if(apellidos.getText().toString().equals("")){
+                Toast.makeText(this, "¡ Deberías introducir los datos para continuar !", Toast.LENGTH_SHORT).show();
+                verificar=false;
+            }if(direccion.getText().toString().equals("")){
+                Toast.makeText(this, "¡ Deberías introducir los datos para continuar !", Toast.LENGTH_SHORT).show();
+                verificar=false;
+            }if(telefono.getText().toString().equals("")){
+                Toast.makeText(this, "¡ Deberías introducir los datos para continuar !", Toast.LENGTH_SHORT).show();
+                verificar=false;
             }
         }
-        //faltan poner bien los return
-        return true;
+        verificar=true;
+        return verificar;
     }
-
+*/
     public void salir(){
+
         finish();
     }
 

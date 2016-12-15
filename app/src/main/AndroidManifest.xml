@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".DatosCliente"
             android:label=""/>
-        <activity android:name=".Pizzas"
+        <activity android:name=".Hamburguesas"
             android:label=""/>
     </application>
 
