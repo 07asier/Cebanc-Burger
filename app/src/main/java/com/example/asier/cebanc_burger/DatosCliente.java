@@ -13,6 +13,7 @@ public class DatosCliente extends MainActivity {
     private Button salir;
     private EditText nombre, apellidos, direccion, telefono;
     private boolean verificar = false;
+    //xapi xapi
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +64,7 @@ public class DatosCliente extends MainActivity {
                 verificar = false;
             }
             if (apellidos.getText().toString().equals("")) {
-                apellidos.setError("Introduce el apellido");
+                apellidos.setError("Introduce el apellido ");
                 verificar = false;
             }
             if (direccion.getText().toString().equals("")) {
