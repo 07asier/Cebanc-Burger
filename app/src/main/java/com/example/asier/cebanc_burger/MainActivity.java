@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,DatosCliente.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.left_in, R.anim.left_out);
             }
         });
 

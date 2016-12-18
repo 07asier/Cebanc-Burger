@@ -68,7 +68,8 @@
         android:layout_alignRight="@+id/textView"
         android:layout_alignEnd="@+id/textView"
         android:layout_marginTop="34dp"
-        android:id="@+id/editTextNombre" />
+        android:id="@+id/editTextNombre"
+        android:hint="Nombre" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -80,7 +81,8 @@
         android:layout_alignLeft="@+id/editTextNombre"
         android:layout_alignStart="@+id/editTextNombre"
         android:layout_marginTop="16dp"
-        android:id="@+id/editTextApellido" />
+        android:id="@+id/editTextApellido"
+        android:hint="Apellidos" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -92,7 +94,8 @@
         android:layout_alignLeft="@+id/editTextApellido"
         android:layout_alignStart="@+id/editTextApellido"
         android:layout_marginTop="22dp"
-        android:id="@+id/editTextDireccion" />
+        android:id="@+id/editTextDireccion"
+        android:hint="Direccion" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -103,7 +106,8 @@
         android:layout_alignLeft="@+id/editTextDireccion"
         android:layout_alignStart="@+id/editTextDireccion"
         android:layout_marginTop="14dp"
-        android:id="@+id/editTextTelefono" />
+        android:id="@+id/editTextTelefono"
+        android:hint="Teléfono" />
 
     <Button
         android:text="@string/siguiente"

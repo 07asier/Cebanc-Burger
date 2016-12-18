@@ -11,4 +11,6 @@
     <string name="telefono">Teléfono:</string>
     <string name="siguiente">Siguiente</string>
     <string name="salir">Salir</string>
+    <string name="finalizar">Finalizar</string>
+
 </resources>

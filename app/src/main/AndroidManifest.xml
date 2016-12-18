@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".DatosCliente"
             android:label=""/>
+        <activity android:name=".AnadirHamburguesas"
+            android:label=""/>
         <activity android:name=".Hamburguesas"
             android:label=""/>
     </application>

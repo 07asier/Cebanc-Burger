@@ -1,6 +1,8 @@
 package com.example.asier.cebanc_burger;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,12 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class DatosCliente extends MainActivity {
+public class DatosCliente extends MainActivity{
     private Button siguiente;
     private Button salir;
     private EditText nombre, apellidos, direccion, telefono;
     private boolean verificar = false;
-    //xapi xapi
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +46,13 @@ public class DatosCliente extends MainActivity {
 
     public void lanzarPedido(boolean v) {
         if (v == true) {
-            Intent i = new Intent(DatosCliente.this, Hamburguesas.class);
+            Intent i = new Intent(DatosCliente.this, AnadirHamburguesas.class);
             i.putExtra("nombre", nombre.getText().toString());
             i.putExtra("apellidos", apellidos.getText().toString());
             i.putExtra("direccion", direccion.getText().toString());
             i.putExtra("telefono", telefono.getText().toString());
             startActivityForResult(i, 1234);
+            overridePendingTransition(R.anim.left_in, R.anim.left_out);
         }
     }
 
@@ -81,10 +84,26 @@ public class DatosCliente extends MainActivity {
         return verificar;
     }
 
-    public void salir() {
 
-        finish();
-    }
+public void salir(){
+    AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+    dialogo1.setTitle("Salir");
+    dialogo1.setMessage("¿Estas seguro de que quieres salir?");
+    dialogo1.setCancelable(false);
+    dialogo1.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialogo1, int id) {
+            finish();
+        }
+    });
+    dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialogo1, int id) {
+
+        }
+    });
+    dialogo1.show();
+
+
+}
 
 
 }
