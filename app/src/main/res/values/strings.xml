@@ -12,5 +12,9 @@
     <string name="siguiente">Siguiente</string>
     <string name="salir">Salir</string>
     <string name="finalizar">Finalizar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="tipocarne">Tipo de carne:</string>
+    <string name="tamaño">Tamaño:</string>
 
 </resources>

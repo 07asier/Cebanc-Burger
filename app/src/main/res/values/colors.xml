@@ -4,4 +4,7 @@
     <color name="colorPrimary">#8BC34A</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FAD317</color>
+    <color name="button_normal">#929392</color>
+    <color name="button_pressed">#c0c1c0</color>
+    <color name="dialog_divider">@android:color/black</color>
 </resources>
