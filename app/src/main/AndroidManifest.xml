@@ -21,6 +21,8 @@
             android:label=""/>
         <activity android:name=".Hamburguesas"
             android:label=""/>
+        <activity android:name=".AnadirBebidas"
+            android:label=""/>
     </application>
 
 </manifest>

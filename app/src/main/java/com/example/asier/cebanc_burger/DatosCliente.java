@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class DatosCliente extends MainActivity{
     private Button siguiente;
     private Button salir;
+
     private EditText nombre, apellidos, direccion, telefono;
     private boolean verificar = false;
 
@@ -28,6 +30,7 @@ public class DatosCliente extends MainActivity{
         direccion = (EditText) findViewById(R.id.editTextDireccion);
         telefono = (EditText) findViewById(R.id.editTextTelefono);
 
+
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +45,8 @@ public class DatosCliente extends MainActivity{
                 salir();
             }
         });
+
+
     }
 
     public void lanzarPedido(boolean v) {
@@ -61,7 +66,7 @@ public class DatosCliente extends MainActivity{
         if (nombre.getText().toString().equals("") && apellidos.getText().toString().equals("") && direccion.getText().toString().equals("") && telefono.getText().toString().equals("")) {
             Toast.makeText(this, "¡ Deberías introducir los datos para continuar !", Toast.LENGTH_SHORT).show();
             verificar = false;
-        } else if (nombre.getText().toString().equals("") || apellidos.getText().toString().equals("") || telefono.getText().toString().equals("")) {
+        } else if (nombre.getText().toString().equals("") || apellidos.getText().toString().equals("") || direccion.getText().toString().equals("")|| telefono.getText().toString().equals("") || telefono.getText().toString().length()<9) {
             if (nombre.getText().toString().equals("")) {
                 nombre.setError("Introduce el nombre");
                 verificar = false;
@@ -75,8 +80,10 @@ public class DatosCliente extends MainActivity{
                 verificar = false;
             }
             if (telefono.getText().toString().equals("")) {
-                telefono.setError(" Introduce el telefono");
+                telefono.setError("Introduce el telefono");
                 verificar = false;
+                }else if(telefono.getText().toString().length()<9){
+                    telefono.setError("El teléfono no es válido");
             }
         } else {
             verificar = true;
@@ -85,7 +92,9 @@ public class DatosCliente extends MainActivity{
     }
 
 
-public void salir(){
+
+
+public void salir() {
     AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
     dialogo1.setTitle("Salir");
     dialogo1.setMessage("¿Estas seguro de que quieres salir?");
@@ -104,6 +113,5 @@ public void salir(){
 
 
 }
-
 
 }

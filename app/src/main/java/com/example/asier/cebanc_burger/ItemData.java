@@ -8,7 +8,7 @@ public class ItemData {
     String text;
     Integer imageId;
     public ItemData(String text, Integer imageId){
-        this.text=text;
+            this.text=text;
         this.imageId=imageId;
     }
 

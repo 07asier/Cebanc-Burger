@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,65 +33,50 @@ import static java.lang.String.*;
 public class Hamburguesas extends MainActivity {
     private Spinner spinnerTamaño,spinnerCarne;
     private FloatingActionButton fabInfoTamaño,fabInfoCarne;
-    //final String[] tamaño = new String[]{"Normal","Whopper"};
+    private NumberPicker numberPicker;
 
-    final String[] carnes=new String[]{"Ternera","Pollo","Buey"};
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hamburguesas);
 
-
+        spinnerTamaño = (Spinner) findViewById(R.id.spinnerTamaño);
         spinnerCarne = (Spinner) findViewById(R.id.spinnerCarne);
         fabInfoTamaño = (FloatingActionButton) findViewById(R.id.fabInfoTamaño);
         fabInfoCarne = (FloatingActionButton) findViewById(R.id.fabInfoCarne);
+        numberPicker=(NumberPicker)findViewById(R.id.numberPicker2);
 
+        numberPicker.setMaxValue(10);
+        numberPicker.setMinValue(0);
+        numberPicker.setWrapSelectorWheel(false);
 
         ArrayList<ItemData> list = new ArrayList<>();
+        ArrayList<ItemData> list2=new ArrayList<>();
         list.add(new ItemData("Hamburguesa normal", R.drawable.hamburguesanormal));
-        list.add(new ItemData("Hamburguesa 'Whopper' ", R.drawable.hamburguesadoble));
-        spinnerTamaño = (Spinner) findViewById(R.id.spinnerTamaño);
+        list.add(new ItemData("Hamburguesa 'Whopper'", R.drawable.hamburguesadoble));
+        list2.add(new ItemData("Ternera",R.drawable.vaca));
+        list2.add(new ItemData("Pollo",R.drawable.pollo));
+        list2.add(new ItemData("Buey",R.drawable.buey));
+
         SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_layout, R.id.txt, list);
         spinnerTamaño.setAdapter(adapter);
+
+        SpinnerAdapter adapter2=new SpinnerAdapter(this,R.layout.spinner_layout,R.id.txt,list2);
+        spinnerCarne.setAdapter(adapter2);
 
         fabInfoTamaño.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrar(v);
+                mostrarTam(v);
 
             }
         });
 
-
         fabInfoCarne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(Hamburguesas.this);
-                dialogo1.setTitle("Información");
-                dialogo1.setMessage("Ternera : Deliciosa carne 100% vacuno vasca" +
-                        "Valor nutricional(por cada 100g):" +
-                        "Energía:1136kJ" +
-                        "Grasas:14g" +
-                        "Carbohidratos:22g" +
-                        "Proteina:13g" +
-                        "Pollo : Exquisito pollo criado en la región" +
-                        "Valor nutricional(por cada 100g):"+
-                        "Energía:967kJ" +
-                        "Grasas:10g" +
-                        "Carbohidratos:23g" +
-                        "Proteina:11g" +
-                        "Buey : El mejor buey regional" +
-                        "Valor nutricional(por cada 100g):"+
-                        "Energía:917kJ" +
-                        "Grasas:11g" +
-                        "Carbohidratos:20g" +
-                        "Proteina:15g");
-                dialogo1.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogo1, int id) {
-                        //nada
-                    }
-                });
-                dialogo1.show();
+               mostrarTipo(v);
+
             }
         });
 
@@ -102,49 +88,65 @@ public class Hamburguesas extends MainActivity {
         overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
     }
 
-    public void mostrar(View view)
-    {
-        // con este tema personalizado evitamos los bordes por defecto
+    public void mostrarTam(View view) {
         final Dialog customDialog = new Dialog(this,R.style.Theme_Dialog_Translucent);
-        //deshabilitamos el título por defecto
         customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //obligamos al usuario a pulsar los botones para cerrarlo
         customDialog.setCancelable(false);
-        //establecemos el contenido de nuestro dialog
         customDialog.setContentView(R.layout.info_tam);
 
         TextView titulo = (TextView) customDialog.findViewById(R.id.titulo);
-        titulo.setText("Título del Dialog");
+        titulo.setText("Información");
 
         TextView contenido = (TextView) customDialog.findViewById(R.id.contenido);
-        contenido.setText("Mensaje con el contenido del dialog" +
-                                "con el contenido del dialog" +
-                                "con el contenido del dialog"+
-                                    "con el contenido del dialog");
-
-
-
+        contenido.setText("Normal: Es el tamaño de hamburguesa estándar, 150g de carne.Es el tamaño más popular. \n"+
+                          " \n"+
+                          "Whopper : Es el tamaño de hamburguesa más grande que disponemos, 300g de carne , para los más fanáticos de las hamburguesas.");
 
 
         ((Button) customDialog.findViewById(R.id.aceptar)).setOnClickListener(new View.OnClickListener() {
-
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 customDialog.dismiss();
-
-
             }
         });
 
-        ((Button) customDialog.findViewById(R.id.cancelar)).setOnClickListener(new View.OnClickListener() {
 
+        customDialog.show();
+    }
+
+    public void mostrarTipo(View view){
+        final Dialog customDialog = new Dialog(this,R.style.Theme_Dialog_Translucent);
+        customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        customDialog.setCancelable(false);
+        customDialog.setContentView(R.layout.info_tam);
+
+        TextView titulo = (TextView) customDialog.findViewById(R.id.titulo);
+        titulo.setText("Información");
+
+        TextView contenido = (TextView) customDialog.findViewById(R.id.contenido);
+        contenido.setText(" -Ternera : Deliciosa carne 100% vacuno vasca\n" +
+                "     Valor nutricional(por cada 100g):\n" +
+                "     Energía:1136kJ\n" +
+                "     Grasas:14g\n" +
+                "     Carbohidratos:22g\n" +
+                "     Proteina:13g\n" +
+                " -Pollo : Exquisito pollo criado en la región\n" +
+                "     Valor nutricional(por cada 100g):\n"+
+                "     Energía:967kJ\n" +
+                "     Grasas:10g\n" +
+                "     Carbohidratos:23g\n" +
+                "     Proteina:11g\n" +
+                " -Buey : El mejor buey regional\n" +
+                "     Valor nutricional(por cada 100g):\n"+
+                "     Energía:917kJ\n" +
+                "     Grasas:11g\n" +
+                "     Carbohidratos:20g\n" +
+                "     Proteina:15g\n");
+
+        ((Button) customDialog.findViewById(R.id.aceptar)).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 customDialog.dismiss();
-
-
             }
         });
 
