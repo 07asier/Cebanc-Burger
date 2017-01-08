@@ -19,7 +19,6 @@ public class AnadirHamburguesas extends DatosCliente {
     private TextView texto;
     private long backPressedTime = 0;
     private FloatingActionButton fab;
-    private ViewPager viewPager;
     private Button bebidas;
 
     protected void onCreate(Bundle savedInstanceState) {

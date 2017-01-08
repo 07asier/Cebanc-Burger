@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tamcarne">
+        <item>Hamburguesa Normal</item>
+        <item>Hamburguesa 'Whopper'</item>
+    </string-array>
+    <string-array name="tipodecarne">
+        <item>Ternera</item>
+        <item>Pollo</item>
+        <item>Buey</item>
+    </string-array>
+</resources>

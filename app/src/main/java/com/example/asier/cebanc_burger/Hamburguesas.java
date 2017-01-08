@@ -15,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,7 +36,8 @@ public class Hamburguesas extends MainActivity {
     private Spinner spinnerTamaño,spinnerCarne;
     private FloatingActionButton fabInfoTamaño,fabInfoCarne;
     private NumberPicker numberPicker;
-
+    private RadioGroup radioGroup;
+    private RadioButton radioButton1 , radioButton2 , radioButton3 , radioButton4 , radioButton5;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,24 +48,41 @@ public class Hamburguesas extends MainActivity {
         fabInfoTamaño = (FloatingActionButton) findViewById(R.id.fabInfoTamaño);
         fabInfoCarne = (FloatingActionButton) findViewById(R.id.fabInfoCarne);
         numberPicker=(NumberPicker)findViewById(R.id.numberPicker2);
+        radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
+        radioButton1=(RadioButton)findViewById(R.id.radioButton1);
+        radioButton2=(RadioButton)findViewById(R.id.radioButton2);
+        radioButton3=(RadioButton)findViewById(R.id.radioButton3);
+        radioButton4=(RadioButton)findViewById(R.id.radioButton4);
+        radioButton5=(RadioButton)findViewById(R.id.radioButton5);
+
+
+        ArrayAdapter<CharSequence> adapter =ArrayAdapter.createFromResource(this,R.array.tamcarne,android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter2 =ArrayAdapter.createFromResource(this,R.array.tipodecarne,android.R.layout.simple_spinner_item);
+        spinnerTamaño.setAdapter(adapter);
+        spinnerCarne.setAdapter(adapter2);
 
         numberPicker.setMaxValue(10);
         numberPicker.setMinValue(0);
         numberPicker.setWrapSelectorWheel(false);
 
-        ArrayList<ItemData> list = new ArrayList<>();
-        ArrayList<ItemData> list2=new ArrayList<>();
-        list.add(new ItemData("Hamburguesa normal", R.drawable.hamburguesanormal));
-        list.add(new ItemData("Hamburguesa 'Whopper'", R.drawable.hamburguesadoble));
-        list2.add(new ItemData("Ternera",R.drawable.vaca));
-        list2.add(new ItemData("Pollo",R.drawable.pollo));
-        list2.add(new ItemData("Buey",R.drawable.buey));
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radioButton1){
 
-        SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_layout, R.id.txt, list);
-        spinnerTamaño.setAdapter(adapter);
+                }else if(checkedId ==R.id.radioButton2){
 
-        SpinnerAdapter adapter2=new SpinnerAdapter(this,R.layout.spinner_layout,R.id.txt,list2);
-        spinnerCarne.setAdapter(adapter2);
+                }else if(checkedId ==R.id.radioButton3){
+
+                }else if(checkedId == R.id.radioButton4){
+
+                }else if(checkedId == R.id.radioButton5){
+
+                }
+            }
+        });
+
+
 
         fabInfoTamaño.setOnClickListener(new View.OnClickListener() {
             @Override

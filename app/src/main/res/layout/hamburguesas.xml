@@ -115,7 +115,7 @@
                 android:drawableRight="@drawable/hamburguesaclasica"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/radioButton"
+                android:id="@+id/radioButton1"
                 android:layout_weight="1" />
 
             <RadioButton
@@ -123,7 +123,7 @@
                 android:drawableRight="@drawable/doublecheeseburguer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioButton2"
                 android:layout_weight="1" />
 
             <RadioButton
@@ -131,7 +131,7 @@
                 android:drawableRight="@drawable/cheeseburguer"
                 android:layout_width="wrap_content"
                 android:layout_height="75dp"
-                android:id="@+id/radioButton2" />
+                android:id="@+id/radioButton3" />
 
             <RadioButton
                 android:text="@string/vegetal"

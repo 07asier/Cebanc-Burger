@@ -23,6 +23,9 @@
             android:label=""/>
         <activity android:name=".AnadirBebidas"
             android:label=""/>
+        <activity android:name=".Bebidas"
+            android:label=""/>
+
     </application>
 
 </manifest>
